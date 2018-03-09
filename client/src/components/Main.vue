@@ -37,28 +37,41 @@
               :disabled="y === 1"
               ><v-icon>+</v-icon>
               </v-btn>
-              <v-layout row wrap>
-                <v-flex md4>
-                  <div class="pt-2 pr-4 pb-5 pl-4 text-xs-center">
-                    <h1>{{ y }} Day(s)</h1>
-                  </div>
+              <v-card-title>
+                <h1>Days: {{ x }} </h1>
+              </v-card-title>
+            </v-toolbar>
+            <v-card-text>
+              <v-layout row>
+                <v-flex md6>
+                  <v-subheader class="title">
+                    First Cutoff:
+                  </v-subheader>
                 </v-flex>
 
-                <v-flex md4>
-                  <div class="pt-2 pr-4 pb-5 pl-4 text-xs-center">
-                    <h1>{{ formatCurrency(firstCutoff) }} </h1>
-                  </div>
-                </v-flex>
-
-                <v-flex md4>
-                  <div class="pt-2 pr-4 pb-5 pl-4 text-xs-center">
-                    <h1><span class="deduction">Tax: ({{ formatCurrency(firstCutoffTax)}})</span></h1>
-                  </div>
+                <v-flex md6>
+                  <v-subheader class="title">
+                    {{ formatCurrency(firstCutoff) }}
+                  </v-subheader>
                 </v-flex>
               </v-layout>
-            </v-toolbar>
+
+              <v-layout row>
+                <v-flex md6>
+                  <v-subheader class="title">
+                    <span class="deduction">Tax: </span>
+                  </v-subheader>
+                </v-flex>
+
+                <v-flex md6>
+                  <v-subheader class="title">
+                    <span class="deduction">{{ formatCurrency(firstCutoffTax)}}</span>
+                  </v-subheader>
+                </v-flex>
+              </v-layout>
+            </v-card-text>
           </v-card>
-          <br /> <br />
+          <br />
 
           <v-card class="white elevation-4">
             <v-toolbar>
@@ -73,27 +86,39 @@
               :disabled="x === 1"
               ><v-icon>+</v-icon>
               </v-btn>
-
-              <v-layout row wrap>
-                <v-flex md4>
-                  <div class="pt-2 pr-4 pb-5 pl-4 text-xs-center">
-                    <h1>{{ y }} Day(s)</h1>
-                  </div>
+              <v-card-title>
+                <h1>Days: {{ y }} </h1>
+              </v-card-title>
+            </v-toolbar>
+            <v-card-text>
+              <v-layout row>
+                <v-flex md6>
+                  <v-subheader class="title">
+                    Second Cutoff:
+                  </v-subheader>
                 </v-flex>
 
-                <v-flex md4>
-                  <div class="pt-2 pr-4 pb-5 pl-4 text-xs-center">
-                    <h1>{{ formatCurrency(secondCutoff) }} </h1>
-                  </div>
-                </v-flex>
-
-                <v-flex md4>
-                  <div class="pt-2 pr-4 pb-5 pl-4 text-xs-center">
-                    <h1><span class="deduction">Tax: ({{ formatCurrency(secondCutoffTax)}})</span></h1>
-                  </div>
+                <v-flex md6>
+                  <v-subheader class="title">
+                    {{ formatCurrency(secondCutoff) }}
+                  </v-subheader>
                 </v-flex>
               </v-layout>
-            </v-toolbar>
+
+              <v-layout row>
+                <v-flex md6>
+                  <v-subheader class="title">
+                    <span class="deduction">Tax: </span>
+                  </v-subheader>
+                </v-flex>
+
+                <v-flex md6>
+                  <v-subheader class="title">
+                    <span class="deduction">{{ formatCurrency(secondCutoffTax)}}</span>
+                  </v-subheader>
+                </v-flex>
+              </v-layout>
+            </v-card-text>
           </v-card>
         </v-flex>
 

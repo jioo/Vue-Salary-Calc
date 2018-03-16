@@ -1,8 +1,9 @@
 <template lang="html">
   <v-layout row wrap>
-    <v-flex d-flex md12>
+
+    <v-flex d-flex md5>
       <v-layout row wrap>
-        <v-flex md4>
+        <v-flex d-flex md12>
           <v-card class="white elevation-4">
             <v-toolbar class="teal" dark>
               <v-toolbar-title>Salary Form</v-toolbar-title>
@@ -22,113 +23,106 @@
             </v-card-text>
           </v-card>
         </v-flex>
-
-        <v-flex md4>
-          <v-card class="white elevation-4">
-            <v-toolbar>
-              <v-btn
-              color="green"
-              small
-              absolute
-              bottom
-              left
-              fab
-              v-on:click="increment('x')"
-              :disabled="y === 1"
-              ><v-icon>+</v-icon>
-              </v-btn>
-              <v-card-title>
-                <h1>Days: {{ x }} </h1>
-              </v-card-title>
-            </v-toolbar>
-            <v-card-text>
-              <v-layout row>
-                <v-flex md6>
-                  <v-subheader class="title">
-                    First Cutoff:
-                  </v-subheader>
-                </v-flex>
-
-                <v-flex md6>
-                  <v-subheader class="title">
-                    {{ formatCurrency(firstCutoff) }}
-                  </v-subheader>
-                </v-flex>
-              </v-layout>
-
-              <v-layout row>
-                <v-flex md6>
-                  <v-subheader class="title">
-                    <span class="deduction">Tax: </span>
-                  </v-subheader>
-                </v-flex>
-
-                <v-flex md6>
-                  <v-subheader class="title">
-                    <span class="deduction">{{ formatCurrency(firstCutoffTax)}}</span>
-                  </v-subheader>
-                </v-flex>
-              </v-layout>
-            </v-card-text>
-          </v-card>
-          <br />
-
-          <v-card class="white elevation-4">
-            <v-toolbar>
-              <v-btn
-              color="green"
-              small
-              absolute
-              bottom
-              left
-              fab
-              v-on:click="increment('y')"
-              :disabled="x === 1"
-              ><v-icon>+</v-icon>
-              </v-btn>
-              <v-card-title>
-                <h1>Days: {{ y }} </h1>
-              </v-card-title>
-            </v-toolbar>
-            <v-card-text>
-              <v-layout row>
-                <v-flex md6>
-                  <v-subheader class="title">
-                    Second Cutoff:
-                  </v-subheader>
-                </v-flex>
-
-                <v-flex md6>
-                  <v-subheader class="title">
-                    {{ formatCurrency(secondCutoff) }}
-                  </v-subheader>
-                </v-flex>
-              </v-layout>
-
-              <v-layout row>
-                <v-flex md6>
-                  <v-subheader class="title">
-                    <span class="deduction">Tax: </span>
-                  </v-subheader>
-                </v-flex>
-
-                <v-flex md6>
-                  <v-subheader class="title">
-                    <span class="deduction">{{ formatCurrency(secondCutoffTax)}}</span>
-                  </v-subheader>
-                </v-flex>
-              </v-layout>
-            </v-card-text>
-          </v-card>
+        <v-flex d-flex>
+          <v-layout>
+            <v-flex d-flex md12>
+              <v-card class="white elevation-4">
+                <v-toolbar>
+                  <v-btn
+                  color="green"
+                  small
+                  absolute
+                  bottom
+                  left
+                  fab
+                  v-on:click="increment('x')"
+                  :disabled="y === 1"
+                  ><v-icon>+</v-icon>
+                  </v-btn>
+                  <v-card-title>
+                    <h1>Days: {{ x }} </h1>
+                  </v-card-title>
+                </v-toolbar>
+                <v-card-text>
+                  <v-list dense class="pt-5">
+                    <v-list-tile>
+                      <v-list-tile-content class="title">First Cutoff:</v-list-tile-content>
+                      <v-list-tile-content class="title align-end">{{ formatCurrency(firstCutoff) }}</v-list-tile-content>
+                    </v-list-tile>
+                    <v-divider></v-divider>
+                    <v-list-tile>
+                      <v-list-tile-content class="title deduction">Tax:</v-list-tile-content>
+                      <v-list-tile-content class="title align-end deduction">{{ formatCurrency(firstCutoffTax)}}</v-list-tile-content>
+                    </v-list-tile>
+                    <v-divider></v-divider>
+                    <v-list-tile>
+                      <v-list-tile-content class="pl-3 pt-2">
+                        <v-switch
+                        :label="`Apply Deduction `"
+                        v-model="toggleDeduction1"
+                        ></v-switch>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                  </v-list>
+                </v-card-text>
+              </v-card>
+            </v-flex>
+            <v-flex d-flex md12>
+              <v-card class="white elevation-4">
+                <v-toolbar>
+                  <v-btn
+                  color="green"
+                  small
+                  absolute
+                  bottom
+                  left
+                  fab
+                  v-on:click="increment('y')"
+                  :disabled="x === 1"
+                  ><v-icon>+</v-icon>
+                  </v-btn>
+                  <v-card-title>
+                    <h1>Days: {{ y }} </h1>
+                  </v-card-title>
+                </v-toolbar>
+                <v-card-text>
+                  <v-list dense class="pt-5">
+                    <v-list-tile>
+                      <v-list-tile-content class="title">Second Cutoff:</v-list-tile-content>
+                      <v-list-tile-content class="title align-end">{{ formatCurrency(secondCutoff) }}</v-list-tile-content>
+                    </v-list-tile>
+                    <v-divider></v-divider>
+                    <v-list-tile>
+                      <v-list-tile-content class="title deduction">Tax:</v-list-tile-content>
+                      <v-list-tile-content class="title align-end deduction">{{ formatCurrency(secondCutoffTax)}}</v-list-tile-content>
+                    </v-list-tile>
+                    <v-divider></v-divider>
+                    <v-list-tile>
+                      <v-list-tile-content class="pl-3 pt-2">
+                        <v-switch
+                        :label="`Apply Deduction `"
+                        v-model="toggleDeduction2"
+                        ></v-switch>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                  </v-list>
+                </v-card-text>
+              </v-card>
+            </v-flex>
+          </v-layout>
         </v-flex>
+      </v-layout>
+    </v-flex>
 
-        <v-flex md4>
+    <v-flex md3>
+      <v-layout row wrap>
+        <v-flex d-flex md12>
           <v-card class="white elevation-4">
 
             <v-card-text>
               <v-layout row>
                 <v-flex xs12>
-                  <v-subheader class="title"><b>Deductions: </b>&nbsp;<span class="deduction">{{ formatCurrency(deduct1) }}</span></v-subheader>
+                  <v-subheader class="title"><b>Deductions: </b>&nbsp;<span class="deduction">{{ formatCurrency(totalDeduction) }}</span></v-subheader>
                 </v-flex>
               </v-layout>
               <v-layout row>
@@ -136,24 +130,24 @@
                   <v-text-field
                     type="number"
                     label="Day(s)"
-                    v-model="deductPerDay1"
+                    v-model="totaldeductPerDay"
                   ></v-text-field>
 
                   <v-text-field
                     type="number"
                     label="Hour(s)"
-                    v-model="deductPerHour1"
+                    v-model="totaldeductPerHour"
                   ></v-text-field>
 
                   <v-text-field
                     type="number"
                     label="Minute(s)"
-                    v-model="deductPerMinute1"
+                    v-model="totaldeductPerMinute"
                   ></v-text-field>
 
                   <v-btn
                   color=""
-                  v-on:click="reset1()"
+                  v-on:click="reset()"
                   :disabled="y === 1"
                   >Reset
                   </v-btn>
@@ -163,15 +157,35 @@
           </v-card>
         </v-flex>
 
+        <v-flex d-flex md12>
+          <v-card class="elevation-2">
+            <v-toolbar dense class="red lighten-2" dark>
+              <v-toolbar-title>Deduction Table</v-toolbar-title>
+            </v-toolbar>
+            <v-card-text>
+              <v-data-table
+                :items="deductionTableItems"
+                class=""
+                hide-actions
+                hide-headers
+                >
+                <template slot="items" slot-scope="props">
+                  <td class="subheading">{{ props.item.label }}</td>
+                  <td class="subheading">{{ formatCurrency(props.item.value) }}</td>
+                </template>
+              </v-data-table>
+            </v-card-text>
+          </v-card>
+        </v-flex>
       </v-layout>
     </v-flex>
 
-    <v-flex md12>
+    <v-flex d-flex md4>
       <v-layout row wrap>
-        <v-flex md8>
+        <v-flex md12>
           <v-card class="white elevation-4">
             <v-toolbar dense class="cyan" dark>
-              <v-toolbar-title>Tax Result</v-toolbar-title>
+              <v-toolbar-title>Salary Result</v-toolbar-title>
             </v-toolbar>
             <v-card-text>
               <v-layout row>
@@ -223,42 +237,6 @@
             </v-card-text>
           </v-card>
         </v-flex>
-
-        <v-flex md4>
-          <v-card class="white elevation-4">
-            <v-toolbar dense class="red lighten-2" dark>
-              <v-toolbar-title>Deduction Table</v-toolbar-title>
-            </v-toolbar>
-            <v-card-text>
-              <v-layout row>
-                <v-flex xs6>
-                  <v-subheader class="title">Per Day</v-subheader>
-                </v-flex>
-                <v-flex xs6>
-                  <v-subheader class="title">{{ formatCurrency(deductPerDay) }}</v-subheader>
-                </v-flex>
-              </v-layout>
-
-              <v-layout row>
-                <v-flex xs6>
-                  <v-subheader class="title">Per Hour</v-subheader>
-                </v-flex>
-                <v-flex xs6>
-                  <v-subheader class="title">{{ formatCurrency(deductPerHour) }}</v-subheader>
-                </v-flex>
-              </v-layout>
-
-              <v-layout row>
-                <v-flex xs6>
-                  <v-subheader class="title">Per Minute</v-subheader>
-                </v-flex>
-                <v-flex xs6>
-                  <v-subheader class="title">{{ formatCurrency(deductPerMinute) }}</v-subheader>
-                </v-flex>
-              </v-layout>
-            </v-card-text>
-          </v-card>
-        </v-flex>
       </v-layout>
     </v-flex>
   </v-layout>
@@ -288,11 +266,26 @@ export default {
       deductPerDay: 0,
       deductPerHour: 0,
       deductPerMinute: 0,
-      deductPerDay1: '',
-      deductPerHour1: '',
-      deductPerMinute1: '',
-      deduct1: 0,
-      deduct2: 0
+      totaldeductPerDay: '',
+      totaldeductPerHour: '',
+      totaldeductPerMinute: '',
+      totalDeduction: 0,
+      toggleDeduction1: false,
+      toggleDeduction2: false,
+      deductionTableItems: [
+        {
+          label: 'Per Day',
+          value: 0
+        },
+        {
+          label: 'Per Hour',
+          value: 0
+        },
+        {
+          label: 'Per Minute',
+          value: 0
+        }
+      ]
     }
   },
   methods: {
@@ -319,9 +312,15 @@ export default {
     setCutoff: function () {
       this.firstCutoffTax = (this.monthlyTax / this.days) * this.x
       this.firstCutoff = (this.perDay * this.x) - this.firstCutoffTax
+      if (this.toggleDeduction1) {
+        this.firstCutoff -= this.totalDeduction
+      }
 
       this.secondCutoffTax = (this.monthlyTax / this.days) * this.y
       this.secondCutoff = (this.perDay * this.y) - this.secondCutoffTax
+      if (this.toggleDeduction2) {
+        this.secondCutoff -= this.totalDeduction
+      }
     },
     setTaxDetails: function () {
       this.monthlySalary = this.salary
@@ -341,25 +340,29 @@ export default {
     },
     setDeductionDetails: function () {
       this.deductPerDay = this.perDay
+      this.deductionTableItems[0].value = this.deductPerDay
+
       this.deductPerHour = this.deductPerDay / 24
+      this.deductionTableItems[1].value = this.deductPerHour
+
       this.deductPerMinute = this.deductPerHour / 60
+      this.deductionTableItems[2].value = this.deductPerMinute
     },
     formatCurrency: function (value) {
-      let val = (value / 1).toFixed(2).replace(',', '.')
-      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      if (!isNaN(value)) {
+        let val = (value / 1).toFixed(2).replace(',', '.')
+        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      } else {
+        return 0.00
+      }
     },
-    computeDeduct1: function () {
-      this.deduct1 = (this.deductPerDay1 * this.deductPerDay) + (this.deductPerHour1 * this.deductPerHour) + (this.deductPerMinute1 * this.deductPerMinute)
+    computetotalDeduction: function () {
+      this.totalDeduction = (this.totaldeductPerDay * this.deductPerDay) + (this.totaldeductPerHour * this.deductPerHour) + (this.totaldeductPerMinute * this.deductPerMinute)
     },
-    reset1: function () {
-      this.deductPerDay1 = ''
-      this.deductPerHour1 = ''
-      this.deductPerMinute1 = ''
-    },
-    reset2: function () {
-      this.deductPerDay2 = ''
-      this.deductPerHour2 = ''
-      this.deductPerMinute2 = ''
+    reset: function () {
+      this.totaldeductPerDay = ''
+      this.totaldeductPerHour = ''
+      this.totaldeductPerMinute = ''
     }
   },
   watch: {
@@ -370,25 +373,34 @@ export default {
       this.setCutoff()
     },
     salary: function (val) {
-      if (val !== '' && this.days !== '') {
-        this.compute()
-      }
-
+      this.compute()
       this.setTaxDetails()
     },
     days: function (val) {
-      if (val !== '' && this.salary !== '') {
-        this.compute()
-      }
+      this.compute()
     },
-    deductPerDay1: function () {
-      this.computeDeduct1()
+    totaldeductPerDay: function () {
+      this.computetotalDeduction()
+      this.setCutoff()
+      this.setDeductionDetails()
     },
-    deductPerHour1: function () {
-      this.computeDeduct1()
+    totaldeductPerHour: function () {
+      this.computetotalDeduction()
+      this.setCutoff()
+      this.setDeductionDetails()
     },
-    deductPerMinute1: function () {
-      this.computeDeduct1()
+    totaldeductPerMinute: function () {
+      this.computetotalDeduction()
+      this.setCutoff()
+      this.setDeductionDetails()
+    },
+    toggleDeduction1: function () {
+      this.setCutoff()
+      this.setDeductionDetails()
+    },
+    toggleDeduction2: function () {
+      this.setCutoff()
+      this.setDeductionDetails()
     }
   }
 }

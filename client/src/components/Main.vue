@@ -12,20 +12,24 @@
               <v-text-field
                 type="number"
                 label="Basic Salary"
+                required
+                :rules="[required]"
                 v-model="salary"
               ></v-text-field>
 
               <v-text-field
                 type="number"
                 label="No. of Working Days"
+                required
+                :rules="[required]"
                 v-model="days"
               ></v-text-field>
             </v-card-text>
           </v-card>
         </v-flex>
-        <v-flex d-flex>
-          <v-layout>
-            <v-flex d-flex md12>
+        <v-flex d-flex lg12>
+          <v-layout row wrap>
+            <v-flex d-flex lg6>
               <v-card class="white elevation-4">
                 <v-toolbar>
                   <v-btn
@@ -40,34 +44,36 @@
                   ><v-icon>+</v-icon>
                   </v-btn>
                   <v-card-title>
-                    <h1>Days: {{ x }} </h1>
+                    Days: {{ x }}
                   </v-card-title>
                 </v-toolbar>
                 <v-card-text>
                   <v-list dense class="pt-5">
                     <v-list-tile>
-                      <v-list-tile-content class="title">First Cutoff:</v-list-tile-content>
-                      <v-list-tile-content class="title align-end">{{ formatCurrency(firstCutoff) }}</v-list-tile-content>
+                      <v-list-tile-content>Frist Cutoff:</v-list-tile-content>
+                      <v-list-tile-content class="align-end">{{ formatCurrency(firstCutoff) }}</v-list-tile-content>
                     </v-list-tile>
                     <v-divider></v-divider>
                     <v-list-tile>
-                      <v-list-tile-content class="title deduction">Tax:</v-list-tile-content>
-                      <v-list-tile-content class="title align-end deduction">{{ formatCurrency(firstCutoffTax)}}</v-list-tile-content>
+                      <v-list-tile-content class="deduction">Tax:</v-list-tile-content>
+                      <v-list-tile-content class="align-end deduction">{{ formatCurrency(firstCutoffTax)}}</v-list-tile-content>
                     </v-list-tile>
                     <v-divider></v-divider>
                     <v-list-tile>
                       <v-list-tile-content class="pl-3 pt-2">
                         <v-switch
-                        :label="`Apply Deduction `"
                         v-model="toggleDeduction1"
                         ></v-switch>
+                      </v-list-tile-content>
+                      <v-list-tile-content>
+                        Apply Deduction
                       </v-list-tile-content>
                     </v-list-tile>
                   </v-list>
                 </v-card-text>
               </v-card>
             </v-flex>
-            <v-flex d-flex md12>
+            <v-flex d-flex lg6>
               <v-card class="white elevation-4">
                 <v-toolbar>
                   <v-btn
@@ -82,27 +88,29 @@
                   ><v-icon>+</v-icon>
                   </v-btn>
                   <v-card-title>
-                    <h1>Days: {{ y }} </h1>
+                    Days: {{ y }}
                   </v-card-title>
                 </v-toolbar>
                 <v-card-text>
                   <v-list dense class="pt-5">
                     <v-list-tile>
-                      <v-list-tile-content class="title">Second Cutoff:</v-list-tile-content>
-                      <v-list-tile-content class="title align-end">{{ formatCurrency(secondCutoff) }}</v-list-tile-content>
+                      <v-list-tile-content>Second Cutoff:</v-list-tile-content>
+                      <v-list-tile-content class="align-end">{{ formatCurrency(secondCutoff) }}</v-list-tile-content>
                     </v-list-tile>
                     <v-divider></v-divider>
                     <v-list-tile>
-                      <v-list-tile-content class="title deduction">Tax:</v-list-tile-content>
-                      <v-list-tile-content class="title align-end deduction">{{ formatCurrency(secondCutoffTax)}}</v-list-tile-content>
+                      <v-list-tile-content class="deduction">Tax:</v-list-tile-content>
+                      <v-list-tile-content class="align-end deduction">{{ formatCurrency(secondCutoffTax)}}</v-list-tile-content>
                     </v-list-tile>
                     <v-divider></v-divider>
                     <v-list-tile>
                       <v-list-tile-content class="pl-3 pt-2">
                         <v-switch
-                        :label="`Apply Deduction `"
                         v-model="toggleDeduction2"
                         ></v-switch>
+                      </v-list-tile-content>
+                      <v-list-tile-content>
+                        Apply Deduction
                       </v-list-tile-content>
                     </v-list-tile>
                   </v-list>
@@ -122,7 +130,7 @@
             <v-card-text>
               <v-layout row>
                 <v-flex xs12>
-                  <v-subheader class="title"><b>Deductions: </b>&nbsp;<span class="deduction">{{ formatCurrency(totalDeduction) }}</span></v-subheader>
+                  <v-subheader><b>Deductions: </b>&nbsp;<span class="deduction">{{ formatCurrency(totalDeduction) }}</span></v-subheader>
                 </v-flex>
               </v-layout>
               <v-layout row>
@@ -148,7 +156,6 @@
                   <v-btn
                   color=""
                   v-on:click="reset()"
-                  :disabled="y === 1"
                   >Reset
                   </v-btn>
                 </v-flex>
@@ -170,8 +177,8 @@
                 hide-headers
                 >
                 <template slot="items" slot-scope="props">
-                  <td class="subheading">{{ props.item.label }}</td>
-                  <td class="subheading">{{ formatCurrency(props.item.value) }}</td>
+                  <td>{{ props.item.label }}</td>
+                  <td>{{ formatCurrency(props.item.value) }}</td>
                 </template>
               </v-data-table>
             </v-card-text>
@@ -192,46 +199,46 @@
                 <v-flex xs4>
                 </v-flex>
                 <v-flex xs4>
-                  <v-subheader class="headline">Monthly</v-subheader>
+                  <v-subheader class="subheading">Monthly</v-subheader>
                 </v-flex>
                 <v-flex xs4>
-                  <v-subheader class="headline">Annual</v-subheader>
-                </v-flex>
-              </v-layout>
-
-              <v-layout row>
-                <v-flex xs4>
-                  <v-subheader class="title">Basic Salary</v-subheader>
-                </v-flex>
-                <v-flex xs4>
-                  <v-subheader class="title">{{ formatCurrency(monthlySalary) }}</v-subheader>
-                </v-flex>
-                <v-flex xs4>
-                  <v-subheader class="title">{{ formatCurrency(annualSalary) }}</v-subheader>
+                  <v-subheader class="subheading">Annual</v-subheader>
                 </v-flex>
               </v-layout>
 
               <v-layout row>
                 <v-flex xs4>
-                  <v-subheader class="title">Witholding Tax</v-subheader>
+                  <v-subheader>Basic Salary</v-subheader>
                 </v-flex>
                 <v-flex xs4>
-                  <v-subheader class="title">{{ formatCurrency(monthlyTax) }}</v-subheader>
+                  <v-subheader>{{ formatCurrency(monthlySalary) }}</v-subheader>
                 </v-flex>
                 <v-flex xs4>
-                  <v-subheader class="title">{{ formatCurrency(annualTax) }}</v-subheader>
+                  <v-subheader>{{ formatCurrency(annualSalary) }}</v-subheader>
                 </v-flex>
               </v-layout>
 
               <v-layout row>
                 <v-flex xs4>
-                  <v-subheader class="title">Net Pay</v-subheader>
+                  <v-subheader>Witholding Tax</v-subheader>
                 </v-flex>
                 <v-flex xs4>
-                  <v-subheader class="title">{{ formatCurrency(montlyNetPay) }}</v-subheader>
+                  <v-subheader>{{ formatCurrency(monthlyTax) }}</v-subheader>
                 </v-flex>
                 <v-flex xs4>
-                  <v-subheader class="title">{{ formatCurrency(annualNetPay) }}</v-subheader>
+                  <v-subheader>{{ formatCurrency(annualTax) }}</v-subheader>
+                </v-flex>
+              </v-layout>
+
+              <v-layout row>
+                <v-flex xs4>
+                  <v-subheader>Net Pay</v-subheader>
+                </v-flex>
+                <v-flex xs4>
+                  <v-subheader>{{ formatCurrency(montlyNetPay) }}</v-subheader>
+                </v-flex>
+                <v-flex xs4>
+                  <v-subheader>{{ formatCurrency(annualNetPay) }}</v-subheader>
                 </v-flex>
               </v-layout>
             </v-card-text>
@@ -285,7 +292,8 @@ export default {
           label: 'Per Minute',
           value: 0
         }
-      ]
+      ],
+      required: (value) => !!value || 'This field is required.'
     }
   },
   methods: {

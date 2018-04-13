@@ -4,7 +4,7 @@
     <v-flex d-flex md5>
       <v-layout row wrap>
         <v-flex d-flex md12>
-          <v-card class="white elevation-4">
+          <!-- <v-card class="white elevation-4">
             <v-toolbar class="teal" dark>
               <v-toolbar-title>Salary Form</v-toolbar-title>
             </v-toolbar>
@@ -25,7 +25,11 @@
                 v-model="days"
               ></v-text-field>
             </v-card-text>
-          </v-card>
+          </v-card> -->
+          <form-panel
+            v-bind="{days, salary}"
+            @salaryChanged="setSalary"
+            @daysChanged="setDays"></form-panel>
         </v-flex>
         <v-flex d-flex lg12>
           <v-layout row wrap>
@@ -72,6 +76,7 @@
                   </v-list>
                 </v-card-text>
               </v-card>
+
             </v-flex>
             <v-flex d-flex lg6>
               <v-card class="white elevation-4">
@@ -250,6 +255,8 @@
 </template>
 
 <script>
+import FormPanel from './Form'
+import CutoffPanel from './Cutoff'
 export default {
   data () {
     return {
@@ -292,9 +299,12 @@ export default {
           label: 'Per Minute',
           value: 0
         }
-      ],
-      required: (value) => !!value || 'This field is required.'
+      ]
     }
+  },
+  components: {
+    FormPanel,
+    CutoffPanel
   },
   methods: {
     compute: function () {
@@ -371,6 +381,12 @@ export default {
       this.totaldeductPerDay = ''
       this.totaldeductPerHour = ''
       this.totaldeductPerMinute = ''
+    },
+    setSalary: function (val) {
+      this.salary = val
+    },
+    setDays: function (val) {
+      this.days = val
     }
   },
   watch: {

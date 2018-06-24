@@ -18,7 +18,7 @@
                with
               <v-icon>favorite</v-icon>
                by
-              <b>STII - ITU</b>
+              <b>Justine Joshua Quiazon</b>
               &nbsp;
               - &nbsp;&nbsp;Powered By:
               <a href="https://vuejs.org/" target="_blank"><img src="https://avatars1.githubusercontent.com/u/6128107?s=400&v=4" alt="" width="25" height="25" class="mt-2"></a>

@@ -2,7 +2,6 @@
   <div id="app">
     <v-app>
       <v-toolbar color="blue darken-2" dark fixed app>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/DOST_seal.svg/2000px-DOST_seal.svg.png" alt="" width="25" height="25">
         <v-toolbar-title>Salary Calculator</v-toolbar-title>
       </v-toolbar>
       <v-content>
